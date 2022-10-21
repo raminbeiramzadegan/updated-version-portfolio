@@ -1,15 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">COMP229</a>
+      <a class="navbar-brand" href="#"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <img src ="Assets\images\logo.png" class="logo"alt="demo">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <% if (title =="Home"){%>
+          <% if (title =="home"){%>
           <li class="nav-item">
             <%} else {%>
-            <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-laptop house"></i>Home</a>
+            <a class="nav-link active" aria-current="page" href="/"><i class="fas fa-thin fa-house"></i>Home</a>
           <%}%>
           </li>
           <% if (title =="about"){%>
@@ -29,24 +30,29 @@
           <% if (title =="products"){%>
           <li class="nav-item">
             <%} else {%>
-            <a class="nav-link active" aria-current="page" href="/products"><i class="fas fa-elementor"></i>Products</a>
+            <a class="nav-link active" aria-current="page" href="/products"><i class="fa-solid fa-cubes-stacked"></i>Products</a>
             <%}%>
           </li>
 
-          <% if (title =="Books"){%>
+          <% if (title =="contacts"){%>
             <li class="nav-item">
               <%} else {%>
-              <a class="nav-link active" aria-current="page" href="/bookList"><i class="fas fa-book"></i>Books</a>
+              <a class="nav-link active" aria-current="page" href="/contactList"><i class="fa-sharp fa-solid fa-lines-leaning"></i>contacts</a>
               <%}%>
             </li>
 
-          <% if (title =="contact"){%>
+          <% if (title =="Contact"){%>
           <li class="nav-item">
             <%} else {%>
             <a class="nav-link active" aria-current="page" href="/contact"><i class="fas fa-mobile-alt"></i>Contact</a>
             <%}%>
           </li>
-          
+          <%if(typeof displayName =='string' && displayName){%>
+            <li class="navbar-text"><i class="fas fa-lg fa-user"></i>Welcome, <%=displayName%></li>
+            <li class="nav-item"><a href="/logout" class="nav-link"><i class="fas fa-lg fa-sign-out-alt"></i>logout</a></li>
+            <%}else{%>
+              <li class ="nav-item"><a href="/login" class="nav-link"><i class="fas fa-lg fa-sign-in-alt"></i>Login</a>a></li>
+              <%}%>
       </div>
     </div>
   </nav>

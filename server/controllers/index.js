@@ -7,21 +7,21 @@ let passport = require('passport');
 let UserModel = require('../model/user');
 let User = UserModel.User; //alias
 module.exports.displayHomePage = (req,res,next)=>{
-    res.render('index',{title:'Home'});
+    res.render('index',{title:'Home', displayName:req.user?req.user.displayName:''});
 }
 
 module.exports.displayAboutPage = (req,res,next)=>{
-    res.render('about',{title:'About'});
+    res.render('about',{title:'About', displayName:req.user?req.user.displayName:''});
 }
 
 module.exports.displayProductsPage = (req,res,next)=>{
-    res.render('Products',{title:'Products'});
+    res.render('Products',{title:'Products',displayName:req.user?req.user.displayName:''});
 }
 module.exports.displayServicesPage = (req,res,next)=>{
-    res.render('Services',{title:'Services'});
+    res.render('Services',{title:'Services',displayName:req.user?req.user.displayName:''});
 }
 module.exports.displayContactPage = (req,res,next)=>{
-    res.render('Contact',{title:'Contact'});
+    res.render('Contact',{title:'Contact', displayName:req.user?req.user.displayName:''});
 }
 module.exports.displayLoginPage = (req,res,next)=>{
     //check if the user is already logged in
@@ -40,11 +40,14 @@ module.exports.displayLoginPage = (req,res,next)=>{
     }
 }
 module.exports.processLoginPage = (req,res,next)=>{
-    passport.authenticate ('local',(err,user,info)=>{
-        //server errr?
-        if(!err)
+    passport.authenticate ('local',
+    (err,user,info)=>{
+        //server err?
+        if(err)
         {
+            //console.log(err);
          return next(err);
+         
         }
         // is there a user login error?
         if(!user)
@@ -58,7 +61,7 @@ module.exports.processLoginPage = (req,res,next)=>{
             {
                 return next(err);
             }
-            return res.redirect('/bookList');
+            return res.redirect('/contactList');
         });
         
     })(req,res,next);
@@ -71,7 +74,7 @@ module.exports.displayRegisterPage = (req,res,next)=>{
         {
             title:'Register',
             messages:req.flash('registerMessage'),
-            displayName:req.user?req.user.displayName:''
+            displayName:req.user ? req.user.displayName: ''
         });
     }
     else
@@ -111,12 +114,15 @@ module.exports.processRegisterPage = (req,res,next)=>{
             // if no error exists, then registration is successful
             // redirect the user and authenticate them
             return passport.authenticate('local')(req,res,()=>{
-                res.redirect('/bookList')
+                res.redirect('/contactList')
             });
         }
     });
 }
 module.exports.performLogout = (req,res,next)=>{
-    req.logout();
-    res.redirect('/');
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/');
+      });
+    //res.redirect('/');
 }

@@ -1,35 +1,34 @@
 let express = require ('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-let Book = require('../model/books');
-module.exports.displayBookList = (req,res,next)=>{
-    Book.find((err,bookList)=>{
+let contact = require('../model/contacts');
+module.exports.displaycontactList = (req,res,next)=>{
+    contact.find((err,contactList)=>{
         if(err)
         {
         return console.error(err);
         }
         else
         {
-         //console.log(BookList);
-         res.render('book/list', {title:'Books', BookList:bookList});
+         //console.log(contactList);
+         res.render('contact/list', {title:'contacts', contactList:contactList});
         }
     });
 }
 
 module.exports.displayAddPage = (req,res,next)=>{
-    res.render('book/add',{title:'Add Book'})
+    res.render('contact/add',{title:'Add contact'})
 
 }
 
 module.exports.processAddPage = (req,res,next)=>{
-    let newBook = Book({
-        "name": req.body.name,
-        "author":req.body.author,
-        "published":req.body.published,
-        "description":req.body.description,
-        "price":req.body.price
+    let newcontact = contact({
+        "cname": req.body.cname,
+        "email":req.body.email,
+        "cnumber":req.body.cnumber
+       
     });
-    Book.create(newBook,(err,Book)=>{
+    contact.create(newcontact,(err,contact)=>{
         if(err)
         {
             console.log(err);
@@ -37,14 +36,14 @@ module.exports.processAddPage = (req,res,next)=>{
         }
         else
         {
-        res.redirect('/bookList');
+        res.redirect('/contactList');
         }
     });
 }
 
 module.exports.displayEditPage = (req,res,next)=>{
     let id = req.params.id;
-    Book.findById(id,(err,bookToEdit)=>{
+    contact.findById(id,(err,contactToEdit)=>{
         if(err)
         {
             console.log(err);
@@ -52,7 +51,7 @@ module.exports.displayEditPage = (req,res,next)=>{
         }
         else
         {
-            res.render('book/edit',{title:'Edit Book', book: bookToEdit});
+            res.render('contact/edit',{title:'Edit contact', contact: contactToEdit});
             
         }
     });
@@ -61,15 +60,14 @@ module.exports.displayEditPage = (req,res,next)=>{
 module.exports.processEditPage = (req,res,next)=>{
     let id = req.params.id
     console.log(req.body);
-    let updatedBook = Book({
+    let updatedcontact = contact({
         "_id":id,
-        "name":req.body.name,
-        "author":req.body.author,
-        "published":req.body.published,
-        "description":req.body.description,
-        "price":req.body.price
+        "cname":req.body.cname,
+        "email":req.body.email,
+        "cnumber":req.body.cnumber
+        
     });
-    Book.updateOne({_id:id}, updatedBook,(err)=>{
+    contact.updateOne({_id:id}, updatedcontact,(err)=>{
         if(err)
         {
             console.log(err);
@@ -77,14 +75,14 @@ module.exports.processEditPage = (req,res,next)=>{
         }
         else
         {
-            res.redirect('/bookList');
+            res.redirect('/contactList');
         }
     });
 }
 
 module.exports.performDelete= (req,res,next)=>{
     let id = req.params.id;
-    Book.remove({_id:id},(err)=>{
+    contact.remove({_id:id},(err)=>{
         if(err)
         {
             console.log(err);
@@ -92,7 +90,7 @@ module.exports.performDelete= (req,res,next)=>{
         }
         else
         {
-            res.redirect('/bookList');
+            res.redirect('/contactList');
         }
     });
 }
