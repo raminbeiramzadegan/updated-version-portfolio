@@ -86,7 +86,7 @@ module.exports.processRegisterPage = (req,res,next)=>{
     //instantiate a user object
     let newUser = new User({
         username: req.body.username,
-        //password:req.body.password
+        // password:req.body.password,
         email:req.body.email,
         displayName:req.body.displayName
     });

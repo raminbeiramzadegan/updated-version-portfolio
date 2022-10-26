@@ -1,30 +1,57 @@
 <%-include ('partials/header.ejs');%>
 <%-include ('partials/main_nav.ejs');%>
+  
+<div class="container-fluid">
+  
+  <h1>Projects</h1>
+   <p>Welcome to projects</p>
+<p>My projects are located below:</p>
 
 
-<h1 class="container p-3 my-3 text-center "><%= title %></h1>
-<div class = "container">
+
+
+   
    <div class="row">
-      <div class="col-sm" id="pro2">
-         <h1 class="container p-3 my-3 text-center ">Environment</h1>
-         <img src ="Assets\images\OIP.jpg" alt="demo" class="rounded-circle" >
-         <p class="container p-3 my-3 text-center "><b>The Environment shows all donatins for the environmant</b></p>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="Assets/images/Python.jpg">
+            <img src="Assets/images/Python.jpg" alt="python" style="width:40%">
+            <div class="caption">
+               <li>
+                  Digikala technical support 
+                  <p> develope a service support via Python with 3 different categories </p>
+                 </li>
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="col-sm" id="pro2">
-         <h1 class="container p-3 my-3 text-center ">Hospital</h1>
-         <img src ="Assets\images\hh.JPG" alt="Avatar" class="rounded-circle">
-         <p class="container p-3 my-3 text-center "><b>The Hospital product provides all the payments for the patients</b></p>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="Assets/images/c-sharp.jpg">
+            <img src="Assets/images/c-sharp.jpg" alt="c-sharp" style="width:40%">
+            <div class="caption">
+               <li> Civil enginnering project<p>
+                  develope a project of th website for a 60 floor bulding with GUI in C# with front end 
+               </p>
+                  </li>
+            </div>
+          </a>
+        </div>
       </div>
-      <div class="col-sm" id="pro2">
-         <h1 class="container p-3 my-3 text-center ">Telecomm</h1>
-         <img src ="Assets\images\tt.jpg" alt="demo" class="rounded-circle" width="300" height="300">
-         <p class="container p-3 my-3 text-center "><b>Our product provides an HR application for the employees</b></p>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="Assets/images/javascript.jpg">
+            <img src="Assets/images/javascript.jpg" alt="javascript" style="width:60%">
+            <div class="caption">
+               <li>Maiz latin food online menu<p>
+                  wrote an online menu with different features  which can be reached by QR code with java script 
+                  </p></li>
+            </div>
+          </a>
+        </div>
       </div>
-   </div>
-
+    </div>
 </div>
-
 <%- include('partials/bottom_nav'); -%>
-<%- include('partials/footer'); -%> 
-
+<%- include('partials/footer'); -%>
 

@@ -1,5 +1,6 @@
 //require modules for the user model
 let mongoose = require('mongoose');
+const passport = require('passport');
 let passportLocalMongoose = require('passport-local-mongoose');
 
 let user = mongoose.Schema
@@ -12,15 +13,15 @@ let user = mongoose.Schema
             trim:true,
             required:'username is required'
         },
-        /*
-        password:
-        {
-            type:string,
-            default:'',
-            trim:true,
-            required:'username is required'
-        }
-        */
+        
+        // password:
+        // {
+        //     type:passport,
+        //     default:'',
+        //     trim:true,
+        //     required:'username is required'},
+        
+        
         /*username:
         {
             type:String,

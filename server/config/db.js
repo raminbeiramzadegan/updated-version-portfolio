@@ -1,4 +1,4 @@
 module.exports =
  {
- "URI":"mongodb://127.0.0.1:27017/cont_list"
+    "URI": "mongodb+srv://raminbeiramzadegan:rmn3476484rmn@cluster0.gvtjocc.mongodb.net/?retryWrites=true&w=majority",
 }

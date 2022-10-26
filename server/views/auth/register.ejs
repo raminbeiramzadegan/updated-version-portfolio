@@ -1,63 +1,81 @@
-<%-include ('../partials/header.ejs');%>
-<%-include ('../partials/main_nav.ejs');%>
-  
-<main class="container">
-    <!--message Area-->
-    <% if (messages.length>0){%>
-        <div class="alert alert-danger">
-            <%=messages%>
-            </div>
-            <%}%>
-            <div class="row">
-                <div class="offset md-4 col-md-4">
-                    <h1>Please Register</h1>
-                    <form method="POST" autocomplete="off">
-                        <fieldset class="form-group">
-                            <label for="username">username:</label>
-                            <input type="text" class="form-control"
-                            name="username"
-                            placeholder = "Enter username"
-                            id ="username" required autofocus>
-                            </fieldset>
+<%-include ('../partials/header.ejs');-%>
+<%-include ('../partials/main_nav.ejs');-%>
+<% if (messages.length>0){%>
+  <div class="alert alert-danger">
+      <%= messages %>
+      </div>
+      <%}%>
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+          <i class="fas fa-user-plus"></i> Register
+        </h1>
 
-                            <fieldset class="form-group">
-                                <label for="password">Password:</label>
-                                <input type="password" class="form-control"
-                                name="password"
-                                placeholder = "Enter password"
-                                id ="password" required>
-                                <!--or
-                                <a href="/register">Register Here</a>-->
-                                </fieldset>
+        <form action="/register" method="POST">
+          <div class="form-group">
+            <label for="name">UserName</label>
+            <input 
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="Enter UertName"
+              value="<%= typeof name != 'undefined' ? name : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter Email"
+              value="<%= typeof email != 'undefined' ? email : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Create Password"
+              value="<%= typeof password != 'undefined' ? password : '' %>"
+            />
+          </div>
+          <!-- <div class="form-group">
+            <label for="password2">Confirm Password</label>
+            <input
+              type="password"
+              id="password2"
+              name="password2"
+              class="form-control"
+              placeholder="Confirm Password"
+              value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+            />
+          </div> -->
+          <div class="form-group">
+            <label for="displayName">display Name:</label>
+            <input type="text" class="form-control"
+            name="displayName"
+            placeholder = "Enter displayName"
+            id ="displayName" required>
+          </div>
+          <fieldset class="form-group text-center">
+            <input type="submit" class="btn btn-success" value="Register">
+            <a href="/">
+           <input type="button" class="btn btn-warning" value="cancel">
+            </a>
+            </fieldset>
+      
+        </form>
+        <p class="lead mt-4">Have An Account? <a href="/login">Login</a></p>
+      </div>
+    </div>
+  </div>
 
-                                <fieldset class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control"
-                                    name="email"
-                                    placeholder = "Enter email Address"
-                                    id ="email" required>
-                                    </fieldset>
-                                    
-                                    <fieldset class="form-group">
-                                        <label for="displayName">display Name:</label>
-                                        <input type="text" class="form-control"
-                                        name="displayName"
-                                        placeholder = "Enter displayName"
-                                        id ="displayName" required>
-                                        </fieldset>
-            
-                                <fieldset class="form-group text-right">
-                                    <input type="submit" class="btn btn-success" value="Register">
-                                    <a href="/">
-                                   <input type="button" class="btn btn-warning" value="cancel">
-                                    </a>
-                                    </fieldset>
-                        </form>
-                    </div>
-                </div>
-    </main>
-
-  
-   <%-include ('../partials/bottom_nav.ejs');%>
-<%-include ('../partials/footer.ejs');%>   
-
+  <%- include('../partials/bottom_nav'); -%>
+  <%- include('../partials/footer'); -%>

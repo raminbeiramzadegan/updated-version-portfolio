@@ -3,23 +3,26 @@
 
 <!--content for the Add page-->
 <div class = "container" >
-    <div class = "row">
-        <div class ="offset-md-3 col-md-6"  >
-        <h1><%= title %></h1>
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+          <div class="card card-body">
+            <h1 class="text-center mb-3">
+                <%= title %>
+            </h1>
         <form class = "form" method="POST" >
-            <div class ="form group">
+            <div class ="form-group">
                 <label for="nameTextField">Name</label>
-                <input type="text" class="form control"
+                <input type="text" class="form-control"
                 id="nameTextField"
                 placeholder="Enter the contact Title"
                 name="cname"
                 value="<%=contact.cname%>"
                 required>
             </div>
-
-            <div class ="form group">
+<br>
+            <div class ="form-group">
                 <label for="emailTextField">Email</label>
-                <input type="text" class="form control"
+                <input type="text" class="form-control"
                 id="emailTextField"
                 placeholder="Enter the contact's email"
                 name="email" 
@@ -27,17 +30,19 @@
                 required>
             </div>
 
-           
+            <br>
 
-            <div class ="form group">
+            <div class ="form-group">
                 <label for="cnumberTextField">Number</label>
-                <input type="number" class="form control"
+                <input type="number" class="form-control"
                 id="cnumberTextField"
                 placeholder="Enter the contact's cnumber"
                 name="cnumber" 
                 value="<%=contact.cnumber%>"
                 required>
             </div>
+            <br>
+            <br>
             <button class = "btn btn-primary" type="submit"><i class ="fas fa-edit"></i>submit</button>
             <a href='/contactList' class="btn btn-warning"><i class="fas fa-undo"></i>cancel</a>  
         
@@ -46,8 +51,8 @@
         </div>
     </div>
 
-
+</div>
   
-<%- include('../partials/bottom_nav'); -%>
-<%- include('../partials/footer'); -%>
+    <%- include('../partials/bottom_nav'); -%>
+    <%- include('../partials/footer'); -%>
 

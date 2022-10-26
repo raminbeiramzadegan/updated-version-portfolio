@@ -1,38 +1,34 @@
-<%- include('partials/header'); -%>
-<%- include('partials/main_nav'); -%>
-  
-<h1 class="container-fluid text-center text-white" id="tbl"><%= title %></h1>
- 
-<p class="container-fluid text-center text-dark text-capitalize" id="tbl">Fill in the <%= title %> form below</p>
-
-
-<form action="/home">
-   <div class="container">
-      <div class="row">
-         <div class="col-sm" id="info">
-         <p>Contact us using the following details: 
-            <br>
-            <br>
-            <b><i class="fa-sharp fa-solid fa-phone"></i>Phone Number:222-3456-7865 <br><i class="fa-sharp fa-solid fa-envelope"></i>Email:mona.rajabifard@gmail.com</b></p>
+<%-include ('partials/header.ejs');%>
+<%-include ('partials/main_nav.ejs');%>
+<div class="col-6 "></div>
+<div class="col-6  container-fluid">
+  <h1><%= title %></h1>
+   <p>Welcome to <%= title %></p>
+<p>Contact us using the following details: 
+   <br><b>Phone Number:514-577-6484. 
+      <br>Email:Zafre.bahrami@gmail.com</b></p>
+       <form method="get" action="/home">
+         <div class="form-group">
+           <label for="fname">First Name</label>
+           <input type="text" class="form-control" id="fname" placeholder="Enter first name" required>
          </div>
-         <div class="col-sm" id="contactDiv">
-         <input type="text" id="fname" name="fname" placeholder="First Name:">
-         <input type="text" id="lname" name="lname" placeholder="Last Name"><br><br>
-         <input type="email" id="email" name="email" placeholder="Email" size="45"><br><br>
-         <textarea id="msg" name="msg" rows="4" cols="50">
-            Write your message here.
-         </textarea>
-         <br>
-         <input type="submit" value="Submit">
-      </div>
-      </div>
-   </div>
-   </div>
-
- </form>
-
-   <%-include ('partials/bottom_nav.ejs');%>
-<%-include ('partials/footer.ejs');%>   
-
-
-
+         <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname"  placeholder="Enter last name" required>
+          </div>
+         <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+         <div class="form-group">
+           <label for="message">message</label>
+           <textarea rows="5" cols="50" class="form-control" id="message" placeholder="message"></textarea> 
+         </div>
+  
+         <button type="submit" class="btn text-right  btn-primary">Submit</button>
+       </form>
+       </div>
+       <div class="col-6 "></div>
+       <%- include('partials/bottom_nav'); -%>
+<%- include('partials/footer'); -%>
